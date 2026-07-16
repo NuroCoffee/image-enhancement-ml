@@ -1,0 +1,10 @@
+{
+  "output": "/workspace/ml-module/artifacts/tensorflowjs",
+  "size_bytes": 613814,
+  "size_megabytes": 0.585,
+  "files": [
+    "group1-shard1of1.bin",
+    "model.json",
+    "model_metadata.json"
+  ]
+}

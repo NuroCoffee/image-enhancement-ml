@@ -1,0 +1,46 @@
+{
+  "format": "tfjs_graph_model",
+  "input": {
+    "name": "image",
+    "shape": [
+      null,
+      224,
+      224,
+      3
+    ],
+    "dtype": "float32",
+    "range": [
+      0.0,
+      1.0
+    ],
+    "preprocessing": "center_square_crop_resize"
+  },
+  "output": {
+    "name": "adjustments",
+    "parameters": [
+      "brightness",
+      "contrast",
+      "saturation"
+    ],
+    "range": [
+      -1.0,
+      1.0
+    ]
+  },
+  "correction": {
+    "order": [
+      "brightness",
+      "contrast",
+      "saturation"
+    ],
+    "brightness_scale": 0.45,
+    "contrast_scale": 0.4,
+    "saturation_scale": 0.5,
+    "factor_formula": "2^(scale*parameter)",
+    "luma_weights": [
+      0.2126,
+      0.7152,
+      0.0722
+    ]
+  }
+}

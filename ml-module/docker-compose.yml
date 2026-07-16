@@ -1,0 +1,11 @@
+services:
+  ml:
+    build: .
+    working_dir: /workspace/ml-module
+    volumes:
+      - ./data:/workspace/ml-module/data
+      - ./checkpoints:/workspace/ml-module/checkpoints
+      - ./artifacts:/workspace/ml-module/artifacts
+      - ./logs:/workspace/ml-module/logs
+    gpus: all
+    shm_size: 4gb

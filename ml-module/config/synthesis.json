@@ -1,0 +1,13 @@
+{
+  "parameter_min": -1.0,
+  "parameter_max": 1.0,
+  "brightness_scale": 0.45,
+  "contrast_scale": 0.4,
+  "saturation_scale": 0.5,
+  "clipping_threshold": 0.015,
+  "clipping_reduction": 0.7,
+  "max_attempts": 6,
+  "train_variants_per_epoch": 50,
+  "valid_variants_per_image": 10,
+  "test_variants_per_image": 10
+}

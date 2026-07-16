@@ -1,0 +1,53 @@
+{
+  "dataset": {
+    "name": "BSDS500",
+    "homepage": "https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html",
+    "seed": 42,
+    "expected_images": {
+      "train": 200,
+      "valid": 100,
+      "test": 200
+    },
+    "source_splits": {
+      "train": "train",
+      "valid": "val",
+      "test": "test"
+    }
+  },
+  "paths": {
+    "raw_images": "data/raw/BSDS500/data/images",
+    "clean_processed": "data/processed/clean",
+    "pairs": "data/pairs-info"
+  },
+  "processing": {
+    "size": 256,
+    "format": "jpg",
+    "quality": 95,
+    "workers": 6
+  },
+  "labels": {
+    "parameters": [
+      "brightness",
+      "contrast",
+      "saturation"
+    ],
+    "range": [
+      -1.0,
+      1.0
+    ]
+  },
+  "prepared": {
+    "at": "2026-07-16T21:54:21.837151+00:00",
+    "clean": {
+      "train": 200,
+      "valid": 100,
+      "test": 200
+    },
+    "examples": {
+      "train": 200,
+      "valid": 1000,
+      "test": 2000
+    },
+    "train_examples_per_epoch": 10000
+  }
+}

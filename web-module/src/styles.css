@@ -1,0 +1,392 @@
+:root {
+  font-family: "Bahnschrift", "DIN Alternate", "Arial Narrow", "Segoe UI", sans-serif;
+  color: #e9f1ff;
+  background: #03060b;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --black: #03060b;
+  --black-soft: #070c13;
+  --panel: #0a1019;
+  --panel-raised: #0d1521;
+  --line: #1c2b3f;
+  --line-strong: #294566;
+  --blue: #1976ff;
+  --blue-bright: #4a9cff;
+  --blue-dark: #0e4ca8;
+  --text: #e9f1ff;
+  --muted: #7f91a8;
+  --danger: #ff5b68;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--black); }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--black);
+}
+
+button,
+input,
+select { font: inherit; }
+
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.38; }
+
+::selection {
+  color: #ffffff;
+  background: var(--blue);
+}
+
+.shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 38px 0 42px;
+}
+
+.header {
+  position: relative;
+  margin: 0 0 26px;
+  padding: 25px 0 31px;
+  border-top: 3px solid var(--blue);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-copy {
+  max-width: 830px;
+}
+
+.eyebrow {
+  margin: 0 0 13px;
+  color: var(--blue-bright);
+  font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  font-stretch: condensed;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  max-width: 680px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: #a7b8ce;
+  font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-label span { color: var(--blue); }
+
+.upload-panel {
+  padding: 18px 20px 20px;
+}
+
+.drop-zone {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px dashed var(--line-strong);
+  border-radius: 1px;
+  background: #060b12;
+  text-align: center;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.drop-zone:hover,
+.drop-zone--active {
+  border-color: var(--blue-bright);
+  background: #081426;
+}
+
+.drop-zone input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+}
+
+.drop-zone__title {
+  color: var(--text);
+  font-size: 1.02rem;
+  font-weight: 650;
+}
+
+.drop-zone__hint {
+  margin-top: 8px;
+  color: var(--muted);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.72rem;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 39px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid #121f2f;
+  background: #070d15;
+  color: var(--muted);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.file-info strong {
+  color: var(--text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin: 17px 0 0;
+}
+
+.preview-card {
+  padding: 16px 18px 18px;
+}
+
+.preview-card--result {
+  border-color: var(--line);
+}
+
+.preview-frame {
+  position: relative;
+  display: grid;
+  min-height: 360px;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid #101d2c;
+  border-radius: 0;
+  background: #020407;
+  color: #607187;
+}
+
+.preview-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 540px;
+  object-fit: contain;
+}
+
+.preview-frame p {
+  max-width: 420px;
+  padding: 24px;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  align-items: end;
+  gap: 24px;
+  margin: 19px 0 0;
+  padding: 18px 20px 20px;
+}
+
+.control-field { display: grid; gap: 8px; }
+
+.control-field label {
+  color: #b8c7da;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.control-field select {
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 1px;
+  outline: none;
+  background: #050a11;
+  color: var(--text);
+}
+
+.control-field select:focus {
+  border-color: var(--blue-bright);
+  box-shadow: none;
+}
+
+.control-hint {
+  color: #64768c;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid #2a3b50;
+  border-radius: 1px;
+  background: #0b121c;
+  color: #c8d5e5;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.button:not(:disabled):hover {
+  border-color: var(--blue-bright);
+  color: #ffffff;
+}
+
+.button:focus-visible,
+.drop-zone:focus-within {
+  outline: 2px solid var(--blue-bright);
+  outline-offset: 3px;
+}
+
+.button--primary {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: #ffffff;
+}
+
+.button--primary:not(:disabled):hover {
+  border-color: var(--blue-bright);
+  background: var(--blue-dark);
+}
+
+.progress-panel {
+  margin: 18px 0 0;
+  padding: 18px 20px 20px;
+}
+
+.progress-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+progress {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #111b28;
+  accent-color: var(--blue);
+}
+
+progress::-webkit-progress-bar { background: #111b28; }
+progress::-webkit-progress-value { background: var(--blue); }
+progress::-moz-progress-bar { background: var(--blue); }
+
+.runtime-data {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 24px;
+}
+
+.parameters,
+.processing-time {
+  margin: 10px 0 0;
+  color: #71849c;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.7rem;
+  overflow-wrap: anywhere;
+}
+
+.error-box {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid #7c2631;
+  border-left: 3px solid var(--danger);
+  border-radius: 1px;
+  background: #190b0e;
+  color: #ff9da5;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+[hidden] { display: none !important; }
+
+@media (max-width: 880px) {
+  .header { margin-left: 0; }
+  .preview-grid { grid-template-columns: 1fr; }
+  .preview-frame { min-height: 280px; }
+  .controls { grid-template-columns: 1fr; align-items: stretch; }
+  .actions { justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .shell { width: min(100% - 20px, 1180px); padding-top: 18px; }
+  .header { margin-left: 0; padding: 20px 0 25px; }
+  h1 { font-size: clamp(2.45rem, 15vw, 4rem); }
+  .subtitle { margin-top: 18px; font-size: 0.9rem; }
+  .upload-panel, .preview-card, .controls, .progress-panel {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 12px;
+    transform: none;
+  }
+  .drop-zone { min-height: 164px; padding: 22px 14px; }
+  .file-info { flex-direction: column; gap: 5px; }
+  .preview-frame { min-height: 220px; }
+  .actions { display: grid; grid-template-columns: 1fr; }
+  .actions .button { width: 100%; }
+  .runtime-data { flex-direction: column; gap: 4px; }
+}
